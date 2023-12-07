@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://delhwqm5qyo78"]
+
+[ext_resource type="Texture2D" uid="uid://v1385jvsam8d" path="res://Assets/Cards/plant/plant_0.png" id="1_xy6hq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt7gk"]
+size = Vector2(242, 332)
+
+[node name="Player_Hand" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+visible = false
+texture = ExtResource("1_xy6hq")
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+shape = SubResource("RectangleShape2D_xt7gk")

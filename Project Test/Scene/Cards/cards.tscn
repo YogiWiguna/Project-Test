@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5vsdwmp6sq03"]
+
+[ext_resource type="Shader" path="res://Scene/Cards/cards.gdshader" id="1_y7q58"]
+[ext_resource type="Texture2D" uid="uid://dkjhhmveuvkx0" path="res://Assets/Cards/plant/plant_back_card.png" id="2_5jks2"]
+[ext_resource type="Texture2D" uid="uid://v1385jvsam8d" path="res://Assets/Cards/plant/beanplant.png" id="2_6rbwd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vl75m"]
+size = Vector2(9.6, 13.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyqbd"]
+render_priority = 0
+shader = ExtResource("1_y7q58")
+shader_parameter/base_texture = ExtResource("2_5jks2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nlnl3"]
+size = Vector2(9.6, 13.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vrna1"]
+render_priority = 0
+shader = ExtResource("1_y7q58")
+shader_parameter/base_texture = ExtResource("2_6rbwd")
+
+[node name="Cards" type="Node3D"]
+
+[node name="Paper" type="Node3D" parent="."]
+
+[node name="Back" type="MeshInstance3D" parent="Paper"]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_vl75m")
+surface_material_override/0 = SubResource("ShaderMaterial_nyqbd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Paper"]
+
+[node name="Front" type="MeshInstance3D" parent="Paper"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_nlnl3")
+surface_material_override/0 = SubResource("ShaderMaterial_vrna1")

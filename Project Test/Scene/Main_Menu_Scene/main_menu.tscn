@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://b82l7dh3hat3u"]
+
+[ext_resource type="Script" path="res://Scene/Main_Menu_Scene/main_menu.gd" id="1_x88vs"]
+[ext_resource type="Texture2D" uid="uid://unfnj08m6c8e" path="res://icon.svg" id="2_fh30h"]
+[ext_resource type="Texture2D" uid="uid://cckteccvn28hh" path="res://Assets/Button/Play/preview.png" id="4_nn86d"]
+[ext_resource type="Texture2D" uid="uid://bfckohqxn47su" path="res://Assets/Button/Profile/preview.png" id="5_upwav"]
+[ext_resource type="Texture2D" uid="uid://v1fwj7cxchuo" path="res://Assets/Button/Settings/preview.png" id="6_7ji1g"]
+[ext_resource type="Texture2D" uid="uid://cqop2bq2rajyu" path="res://Assets/Button/Instruction/preview.png" id="7_5olbm"]
+
+[node name="Main_Menu" type="Node2D"]
+script = ExtResource("1_x88vs")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(970.5, 543)
+scale = Vector2(15.0859, 8.54688)
+texture = ExtResource("2_fh30h")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(961, 370)
+scale = Vector2(0.942041, 0.889989)
+
+[node name="username" type="Label" parent="."]
+offset_left = 216.303
+offset_top = 105.16
+offset_right = 338.303
+offset_bottom = 191.16
+theme_override_font_sizes/font_size = 40
+
+[node name="TopBars" type="HBoxContainer" parent="."]
+offset_left = 99.7035
+offset_top = 80.9599
+offset_right = 99.7035
+offset_bottom = 80.9599
+scale = Vector2(0.4, 0.4)
+
+[node name="Profile_button2" type="TextureButton" parent="TopBars"]
+layout_mode = 2
+texture_normal = ExtResource("5_upwav")
+texture_pressed = ExtResource("5_upwav")
+texture_hover = ExtResource("5_upwav")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopBars"]
+custom_minimum_size = Vector2(3500, 0)
+layout_mode = 2
+
+[node name="Instruction_button" type="TextureButton" parent="TopBars"]
+layout_mode = 2
+texture_normal = ExtResource("7_5olbm")
+texture_pressed = ExtResource("7_5olbm")
+texture_hover = ExtResource("7_5olbm")
+stretch_mode = 0
+
+[node name="Gap" type="MarginContainer" parent="TopBars"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Setting_button" type="TextureButton" parent="TopBars"]
+layout_mode = 2
+texture_normal = ExtResource("6_7ji1g")
+texture_pressed = ExtResource("6_7ji1g")
+texture_hover = ExtResource("6_7ji1g")
+stretch_mode = 0
+
+[node name="Play_container" type="CenterContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 808.0
+offset_top = 729.0
+offset_right = 1400.0
+offset_bottom = 1065.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="Play_button" type="TextureButton" parent="Play_container"]
+layout_mode = 2
+texture_normal = ExtResource("4_nn86d")
+texture_pressed = ExtResource("4_nn86d")
+texture_hover = ExtResource("4_nn86d")
+
+[connection signal="pressed" from="TopBars/Profile_button2" to="." method="_on_profile_button_2_pressed"]
+[connection signal="pressed" from="TopBars/Instruction_button" to="." method="_on_instruction_button_pressed"]
+[connection signal="pressed" from="TopBars/Setting_button" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Play_container/Play_button" to="." method="_on_play_button_pressed"]

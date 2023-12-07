@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5bk2gjlw7y66"]
+
+[ext_resource type="Texture2D" uid="uid://bn43kfo65yhah" path="res://Assets/Token/Seed/seed_0.png" id="1_51cs4"]
+
+[node name="Token" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+metadata/_edit_horizontal_guides_ = [-65.0]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 76.0
+texture = ExtResource("1_51cs4")
+expand_mode = 1

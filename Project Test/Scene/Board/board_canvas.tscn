@@ -1,0 +1,297 @@
+[gd_scene load_steps=17 format=3 uid="uid://bvymnn1rkglqv"]
+
+[ext_resource type="Script" path="res://Scene/Board/board_canvas.gd" id="1_he14u"]
+[ext_resource type="Texture2D" uid="uid://dr46vlhmhivnw" path="res://Assets/win lose condition/base.png" id="2_6p4us"]
+[ext_resource type="PackedScene" uid="uid://bgfyov0408wkf" path="res://Scene/Board/board.tscn" id="3_0xmqk"]
+[ext_resource type="Texture2D" uid="uid://dnm2n32aqj1pw" path="res://Assets/win lose condition/normal_point_middle.png" id="3_by2vt"]
+[ext_resource type="Texture2D" uid="uid://bpks135ldom7q" path="res://Assets/win lose condition/cup.png" id="4_s74gm"]
+[ext_resource type="Texture2D" uid="uid://cc08106q6ex2x" path="res://Assets/win lose condition/player_point_small.png" id="5_av51h"]
+[ext_resource type="Texture2D" uid="uid://dhimsop7ixue1" path="res://Assets/win lose condition/player_point_medium.png" id="5_yedep"]
+[ext_resource type="Texture2D" uid="uid://dvcqwv81plxlx" path="res://Assets/win lose condition/normal_point_small.png" id="6_2lekt"]
+[ext_resource type="Texture2D" uid="uid://u363u1iih8ju" path="res://Assets/win lose condition/enemy_point_small.png" id="7_f3x7p"]
+[ext_resource type="Texture2D" uid="uid://dsqvqrvl8vhqj" path="res://Assets/win lose condition/enemy_point_medium.png" id="8_hgidh"]
+[ext_resource type="Texture2D" uid="uid://da4sqcw0q41ss" path="res://Assets/Button/Pause/preview.png" id="10_ioopw"]
+[ext_resource type="Texture2D" uid="uid://lkg484lt486q" path="res://Assets/Button/End turn/preview.png" id="12_c6e1h"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k34ge"]
+load_path = "res://.godot/imported/osmous_game.png-b85486975ba79a67f5842676a0e57db0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hbvgj"]
+load_path = "res://.godot/imported/ina_game.png-ac10e1f6b31f0b4a0b3c41cbf7e144e9.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lhg48"]
+load_path = "res://.godot/imported/magnolia_game.png-e0e73dabe1203eace27c7011e28784ee.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wcl3t"]
+load_path = "res://.godot/imported/patch_game.png-26009fe0f535b066d081bed0a14af424.ctex"
+
+[node name="Board_Canvas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_he14u")
+
+[node name="Board" parent="." instance=ExtResource("3_0xmqk")]
+
+[node name="Base" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 772.0
+offset_right = 1140.0
+offset_bottom = 147.0
+
+[node name="Base" type="TextureRect" parent="Base"]
+layout_mode = 2
+texture = ExtResource("2_6p4us")
+expand_mode = 1
+
+[node name="Middle_point" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Middle_point" type="TextureRect" parent="Middle_point"]
+layout_mode = 0
+offset_left = 925.0
+offset_top = 102.0
+offset_right = 994.0
+offset_bottom = 170.0
+texture = ExtResource("3_by2vt")
+expand_mode = 1
+
+[node name="Cup" type="TextureRect" parent="Middle_point"]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 109.0
+offset_right = 985.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
+texture = ExtResource("4_s74gm")
+expand_mode = 1
+
+[node name="Player_Score2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Player_point_small" type="TextureRect" parent="Player_Score2"]
+layout_mode = 0
+offset_left = 747.0
+offset_top = 9.0
+offset_right = 779.0
+offset_bottom = 31.0
+texture = ExtResource("5_yedep")
+expand_mode = 1
+
+[node name="Player_point_medium" type="TextureRect" parent="Player_Score2"]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 41.0
+offset_right = 796.0
+offset_bottom = 82.0
+texture = ExtResource("5_av51h")
+expand_mode = 1
+
+[node name="Player_point_small2" type="TextureRect" parent="Player_Score2"]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 85.0
+offset_right = 818.0
+offset_bottom = 107.0
+texture = ExtResource("6_2lekt")
+expand_mode = 1
+
+[node name="Player_point_small3" type="TextureRect" parent="Player_Score2"]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 139.0
+offset_right = 912.0
+offset_bottom = 161.0
+texture = ExtResource("6_2lekt")
+expand_mode = 1
+
+[node name="Player_point_medium2" type="TextureRect" parent="Player_Score2"]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 107.0
+offset_right = 857.0
+offset_bottom = 148.0
+texture = ExtResource("3_by2vt")
+expand_mode = 1
+
+[node name="Enemy_Score" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Enemy_point_small" type="TextureRect" parent="Enemy_Score"]
+layout_mode = 0
+offset_left = 1143.0
+offset_top = 9.0
+offset_right = 1175.0
+offset_bottom = 31.0
+texture = ExtResource("7_f3x7p")
+expand_mode = 1
+
+[node name="Enemy_point_medium" type="TextureRect" parent="Enemy_Score"]
+layout_mode = 0
+offset_left = 1123.0
+offset_top = 41.0
+offset_right = 1164.0
+offset_bottom = 82.0
+texture = ExtResource("8_hgidh")
+expand_mode = 1
+
+[node name="Enemy_point_small2" type="TextureRect" parent="Enemy_Score"]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 85.0
+offset_right = 1132.0
+offset_bottom = 107.0
+texture = ExtResource("6_2lekt")
+expand_mode = 1
+
+[node name="Enemy_point_small3" type="TextureRect" parent="Enemy_Score"]
+layout_mode = 0
+offset_left = 1009.0
+offset_top = 140.0
+offset_right = 1041.0
+offset_bottom = 162.0
+texture = ExtResource("6_2lekt")
+expand_mode = 1
+
+[node name="Enemy_point_medium2" type="TextureRect" parent="Enemy_Score"]
+layout_mode = 0
+offset_left = 1063.0
+offset_top = 107.0
+offset_right = 1104.0
+offset_bottom = 148.0
+texture = ExtResource("3_by2vt")
+expand_mode = 1
+
+[node name="Pause_button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -138.0
+offset_top = 22.0
+offset_right = 142.0
+offset_bottom = 294.0
+grow_horizontal = 0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("10_ioopw")
+texture_pressed = ExtResource("10_ioopw")
+texture_hover = ExtResource("10_ioopw")
+stretch_mode = 0
+
+[node name="EndTurn_button" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = -88.9999
+offset_right = 652.0
+offset_bottom = 247.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("12_c6e1h")
+texture_pressed = ExtResource("12_c6e1h")
+texture_hover = ExtResource("12_c6e1h")
+stretch_mode = 0
+
+[node name="Player" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 37.0
+offset_top = 858.0
+offset_right = 505.0
+offset_bottom = 1314.0
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("CompressedTexture2D_k34ge")
+stretch_mode = 0
+
+[node name="Another_Player" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1749.0
+offset_top = 273.0
+offset_right = 2217.0
+offset_bottom = 1677.0
+scale = Vector2(0.3, 0.3)
+
+[node name="Player2" type="TextureButton" parent="Another_Player"]
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_hbvgj")
+texture_pressed = SubResource("CompressedTexture2D_hbvgj")
+texture_hover = SubResource("CompressedTexture2D_hbvgj")
+
+[node name="Gap" type="MarginContainer" parent="Another_Player"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Player3" type="TextureButton" parent="Another_Player"]
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_lhg48")
+texture_pressed = SubResource("CompressedTexture2D_lhg48")
+texture_hover = SubResource("CompressedTexture2D_lhg48")
+
+[node name="Gap2" type="MarginContainer" parent="Another_Player"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Player4" type="TextureButton" parent="Another_Player"]
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_wcl3t")
+texture_pressed = SubResource("CompressedTexture2D_wcl3t")
+texture_hover = SubResource("CompressedTexture2D_wcl3t")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 641.0
+offset_top = -209.0
+offset_right = 941.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Actions" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Attack_Phase" type="Button" parent="Panel/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Plant_Phase" type="Button" parent="Panel/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Plant"
+
+[node name="End_Phase" type="Button" parent="Panel/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "End Turn"
+
+[connection signal="pressed" from="Pause_button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Player" to="." method="_on_player_pressed"]

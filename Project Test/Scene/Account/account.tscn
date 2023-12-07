@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://j22xmx8btwfw"]
+
+[ext_resource type="Shader" path="res://Scene/Setting/setting.gdshader" id="1_jj0gp"]
+[ext_resource type="Script" path="res://Scene/Account/account.gd" id="1_ptsqw"]
+[ext_resource type="Texture2D" uid="uid://vdiqj0b5khtb" path="res://Assets/Setting & instruction/exit base.png" id="2_3ni8l"]
+[ext_resource type="Texture2D" uid="uid://djnglnobpdyaw" path="res://Assets/Setting & instruction/icon.png" id="3_rbpvw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yfdcq"]
+shader = ExtResource("1_jj0gp")
+shader_parameter/amount = 1.0
+
+[node name="account" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptsqw")
+
+[node name="Blur_Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yfdcq")
+layout_mode = 0
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 1935.0
+offset_bottom = 1076.0
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -463.0
+offset_top = -392.0
+offset_right = 463.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="Info_Title" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = -1.0
+offset_right = 571.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 60
+text = "Account"
+
+[node name="Back_button2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 1382.0
+offset_top = 145.0
+offset_right = 1582.0
+offset_bottom = 357.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Back_button" type="TextureButton" parent="Back_button2"]
+layout_mode = 2
+texture_normal = ExtResource("2_3ni8l")
+texture_pressed = ExtResource("2_3ni8l")
+texture_hover = ExtResource("2_3ni8l")
+stretch_mode = 0
+
+[node name="Back_Cross_button" type="TextureButton" parent="Back_button2/Back_button"]
+layout_mode = 2
+offset_left = 19.9995
+offset_top = 29.9999
+offset_right = 172.0
+offset_bottom = 179.0
+texture_normal = ExtResource("3_rbpvw")
+texture_pressed = ExtResource("3_rbpvw")
+texture_hover = ExtResource("3_rbpvw")
+
+[connection signal="pressed" from="Back_button2/Back_button/Back_Cross_button" to="." method="_on_back_cross_button_pressed"]

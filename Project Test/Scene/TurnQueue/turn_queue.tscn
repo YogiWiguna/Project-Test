@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyoyoqekv8obp"]
+
+[ext_resource type="Script" path="res://Scene/TurnQueue/turn_queue.gd" id="1_fswaf"]
+[ext_resource type="Texture2D" uid="uid://bomqew76vcjsq" path="res://Assets/Button/Timer/preview.png" id="2_hu00h"]
+[ext_resource type="Texture2D" uid="uid://unfnj08m6c8e" path="res://icon.svg" id="4_bau3v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kr0h"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hbvgj"]
+load_path = "res://.godot/imported/ina_game.png-ac10e1f6b31f0b4a0b3c41cbf7e144e9.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wcl3t"]
+load_path = "res://.godot/imported/patch_game.png-26009fe0f535b066d081bed0a14af424.ctex"
+
+[node name="TurnQueue" type="Node"]
+script = ExtResource("1_fswaf")
+
+[node name="Action" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 200)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 634.0
+offset_top = -220.0
+offset_right = 934.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Actions" type="VBoxContainer" parent="Action"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Attack_Phase" type="Button" parent="Action/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Plant_Phase" type="Button" parent="Action/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Plant"
+
+[node name="End_Phase" type="Button" parent="Action/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "End Turn"
+
+[node name="Phase_Turn" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 274.0
+offset_top = -125.0
+offset_right = -251.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4kr0h")
+
+[node name="Phase_Label" type="Label" parent="Phase_Turn"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 81.0
+offset_right = 868.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 40
+text = "ENEMY TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer_Background" type="Sprite2D" parent="."]
+scale = Vector2(0.264901, 0.324219)
+texture = ExtResource("2_hu00h")
+centered = false
+offset = Vector2(25, 25)
+
+[node name="TimerPlayer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 20.0
+one_shot = true
+
+[node name="Time" type="Label" parent="TimerPlayer"]
+offset_left = 87.0
+offset_top = 22.0
+offset_right = 127.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Another_Player" type="VBoxContainer" parent="."]
+visible = false
+offset_left = 1749.0
+offset_top = 273.0
+offset_right = 2217.0
+offset_bottom = 1677.0
+scale = Vector2(0.3, 0.3)
+
+[node name="Player" type="TextureButton" parent="Another_Player"]
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_hbvgj")
+
+[node name="Gap" type="MarginContainer" parent="Another_Player"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Enemy" type="TextureButton" parent="Another_Player"]
+layout_mode = 2
+texture_normal = ExtResource("4_bau3v")
+stretch_mode = 0
+
+[node name="Gap2" type="MarginContainer" parent="Another_Player"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Player4" type="TextureButton" parent="Another_Player"]
+visible = false
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_wcl3t")
+texture_pressed = SubResource("CompressedTexture2D_wcl3t")
+texture_hover = SubResource("CompressedTexture2D_wcl3t")
+
+[connection signal="pressed" from="Action/Actions/Attack_Phase" to="." method="_on_attack_phase_pressed"]
+[connection signal="pressed" from="Action/Actions/Plant_Phase" to="." method="_on_plant_phase_pressed"]
+[connection signal="pressed" from="Action/Actions/End_Phase" to="." method="_on_end_phase_pressed"]
+[connection signal="timeout" from="TimerPlayer" to="." method="_on_timer_player_timeout"]

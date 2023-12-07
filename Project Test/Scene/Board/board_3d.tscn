@@ -1,0 +1,104 @@
+[gd_scene load_steps=18 format=3 uid="uid://dk787nwdv3q2"]
+
+[ext_resource type="Script" path="res://Scene/Board/DirectionalLight3D.gd" id="1_l01dp"]
+[ext_resource type="Texture2D" uid="uid://be3oapwdn4r1n" path="res://Assets/map/top grid.png" id="1_wo46q"]
+[ext_resource type="Texture2D" uid="uid://dkjhhmveuvkx0" path="res://Assets/Cards/plant/plant_back_card.png" id="2_tfdka"]
+[ext_resource type="Texture2D" uid="uid://dmlr3e27ja5ql" path="res://Assets/Cards/seed/seed_back_card.png" id="4_0xeea"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v06dd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_51488"]
+sky_material = SubResource("ProceduralSkyMaterial_v06dd")
+
+[sub_resource type="Environment" id="Environment_2fn8b"]
+background_mode = 2
+sky = SubResource("Sky_51488")
+sky_custom_fov = 1.0
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gf4qc"]
+albedo_texture = ExtResource("1_wo46q")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6cj3l"]
+material = SubResource("StandardMaterial3D_gf4qc")
+size = Vector2(1.5, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uwtoh"]
+data = PackedVector3Array(0.3, 0, 0.2, -0.3, 0, 0.2, 0.3, 0, -0.2, -0.3, 0, 0.2, -0.3, 0, -0.2, 0.3, 0, -0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6lo1"]
+albedo_texture = ExtResource("2_tfdka")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bra5k"]
+material = SubResource("StandardMaterial3D_n6lo1")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e54a6"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dkh5"]
+albedo_texture = ExtResource("4_0xeea")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gomri"]
+material = SubResource("StandardMaterial3D_7dkh5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1unfp"]
+size = Vector2(5, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wxm5u"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Board_3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2fn8b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+script = ExtResource("1_l01dp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.244292, 0.969702, 0, -0.969702, 0.244292, 0, 13.538, 4.04757)
+
+[node name="Board" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.99067, 0, 0, 0, 0.502049, 0, 0, 0, 15.2263, 0, 0.1, 0)
+mesh = SubResource("PlaneMesh_6cj3l")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Board"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_uwtoh")
+
+[node name="Plant_Deck" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.91388, -0.0181134, 0, 0.00992143, 1.66846, 0, 0, 0, 1.35797, -10.3974, 0.119571, 0.54218)
+visible = false
+mesh = SubResource("PlaneMesh_bra5k")
+skeleton = NodePath("../Table")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plant_Deck"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plant_Deck/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e54a6")
+
+[node name="Seed_Deck" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.874044, -0.00155054, -0.00036758, 0.000823768, 1.64517, -3.46436e-07, 0.000244079, -4.67587e-14, 1.3163, -10.4092, 0.15, 3.71862)
+visible = false
+mesh = SubResource("PlaneMesh_gomri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Seed_Deck"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Seed_Deck/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e54a6")
+
+[node name="Table" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.82986, 0, 0, 0, 5.92699, 0, 0, 0, 5.92699, 0, 0, 0)
+mesh = SubResource("PlaneMesh_1unfp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Table"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wxm5u")

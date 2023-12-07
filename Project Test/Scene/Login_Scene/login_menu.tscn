@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bchfhycqw8cc1"]
+
+[ext_resource type="Script" path="res://Scene/Login_Scene/login_menu.gd" id="1_csmsd"]
+[ext_resource type="Texture2D" uid="uid://unfnj08m6c8e" path="res://icon.svg" id="2_ltxev"]
+[ext_resource type="Texture2D" uid="uid://davg44482jdip" path="res://Assets/Button/Login/preview.png" id="3_ab55i"]
+[ext_resource type="Texture2D" uid="uid://db46bu3itrm8c" path="res://Assets/Button/Register/preview.png" id="4_871o4"]
+[ext_resource type="Texture2D" uid="uid://v1fwj7cxchuo" path="res://Assets/Button/Settings/preview.png" id="5_7ngyc"]
+[ext_resource type="Texture2D" uid="uid://4et8mt3d82fb" path="res://Assets/Button/Info/preview.png" id="6_vaf8s"]
+
+[node name="Login_Menu" type="Node2D"]
+script = ExtResource("1_csmsd")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(947.5, 540)
+scale = Vector2(14.8672, 8.45313)
+texture = ExtResource("2_ltxev")
+
+[node name="Menu_Vertical" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 100)
+offset_left = 1518.0
+offset_top = 794.0
+offset_right = 2390.0
+offset_bottom = 1470.0
+scale = Vector2(0.375025, 0.337939)
+
+[node name="Login" type="TextureButton" parent="Menu_Vertical"]
+layout_mode = 2
+texture_normal = ExtResource("3_ab55i")
+texture_pressed = ExtResource("3_ab55i")
+
+[node name="Register" type="TextureButton" parent="Menu_Vertical"]
+layout_mode = 2
+texture_normal = ExtResource("4_871o4")
+texture_pressed = ExtResource("4_871o4")
+texture_hover = ExtResource("4_871o4")
+
+[node name="Menu_Horizontal" type="HBoxContainer" parent="."]
+offset_left = 1586.0
+offset_top = 29.0
+offset_right = 2204.0
+offset_bottom = 301.0
+scale = Vector2(0.4, 0.4)
+
+[node name="Info_button" type="TextureButton" parent="Menu_Horizontal"]
+layout_mode = 2
+texture_normal = ExtResource("6_vaf8s")
+texture_pressed = ExtResource("6_vaf8s")
+texture_hover = ExtResource("6_vaf8s")
+stretch_mode = 0
+
+[node name="Gap" type="MarginContainer" parent="Menu_Horizontal"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Setting_button" type="TextureButton" parent="Menu_Horizontal"]
+layout_mode = 2
+texture_normal = ExtResource("5_7ngyc")
+texture_pressed = ExtResource("5_7ngyc")
+texture_hover = ExtResource("5_7ngyc")
+stretch_mode = 0
+
+[connection signal="pressed" from="Menu_Vertical/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Menu_Vertical/Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="Menu_Horizontal/Info_button" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="Menu_Horizontal/Setting_button" to="." method="_on_setting_button_pressed"]

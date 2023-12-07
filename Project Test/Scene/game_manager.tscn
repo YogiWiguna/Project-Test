@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmhdvbdwp2tr5"]
+
+[ext_resource type="Script" path="res://Scene/game_manager.gd" id="1_dsj4u"]
+[ext_resource type="PackedScene" uid="uid://bvymnn1rkglqv" path="res://Scene/Board/board_canvas.tscn" id="2_hpbc8"]
+[ext_resource type="PackedScene" uid="uid://dk3nu1ksv0pta" path="res://Scene/Info/Info.tscn" id="3_2s6oq"]
+[ext_resource type="PackedScene" uid="uid://chscteuxys6h3" path="res://Scene/Setting/setting.tscn" id="4_tt1s6"]
+[ext_resource type="PackedScene" uid="uid://delhwqm5qyo78" path="res://Scene/Player_hand/player_hand.tscn" id="5_jexbw"]
+[ext_resource type="PackedScene" uid="uid://bydrpyjblgukh" path="res://Scene/Pause/pause.tscn" id="6_q4a8c"]
+[ext_resource type="PackedScene" uid="uid://c80j5nrqt8arl" path="res://Scene/Character_zoom/char_img_zoom.tscn" id="7_g17y3"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_dsj4u")
+
+[node name="Board_Canvas" parent="." instance=ExtResource("2_hpbc8")]
+
+[node name="Info_Canvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Info" parent="Info_Canvas" instance=ExtResource("3_2s6oq")]
+visible = false
+
+[node name="Setting_Canvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Setting" parent="Setting_Canvas" instance=ExtResource("4_tt1s6")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Player_Hand" parent="CanvasLayer" instance=ExtResource("5_jexbw")]
+position = Vector2(600, 1045)
+
+[node name="Pause_Canvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="pause" parent="Pause_Canvas" instance=ExtResource("6_q4a8c")]
+visible = false
+light_mask = 2
+visibility_layer = 2
+
+[node name="Char_img_zoom" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Char_img_zoom" parent="Char_img_zoom" instance=ExtResource("7_g17y3")]
+visible = false

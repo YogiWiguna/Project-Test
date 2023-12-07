@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c80j5nrqt8arl"]
+
+[ext_resource type="Texture2D" uid="uid://4oac7d31p0eo" path="res://Assets/Teacher_Overview/ina_game.png" id="1_d10tm"]
+[ext_resource type="Shader" path="res://Scene/Setting/setting.gdshader" id="1_eqp2u"]
+[ext_resource type="Script" path="res://Scene/Character_zoom/char_img_zoom.gd" id="1_evsbi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ri3iq"]
+shader = ExtResource("1_eqp2u")
+shader_parameter/amount = 1.0
+
+[node name="Char_img_zoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_evsbi")
+
+[node name="Blur_Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ri3iq")
+layout_mode = 0
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 1935.0
+offset_bottom = 1076.0
+
+[node name="Teacher_img_zoom" type="Sprite2D" parent="."]
+position = Vector2(957, 474)
+scale = Vector2(0.884615, 0.901316)
+texture = ExtResource("1_d10tm")
+
+[connection signal="gui_input" from="Blur_Background" to="." method="_on_blur_background_gui_input"]

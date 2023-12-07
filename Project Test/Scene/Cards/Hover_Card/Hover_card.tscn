@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://yicrliv8ocro"]
+
+[ext_resource type="Texture2D" uid="uid://v1385jvsam8d" path="res://Assets/Cards/plant/plant_0.png" id="1_i1i5x"]
+[ext_resource type="Shader" path="res://Scene/Cards/Hover_Card/Hover_card.gdshader" id="1_w31k4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5cvy4"]
+shader = ExtResource("1_w31k4")
+shader_parameter/amount = 1.0
+
+[node name="Hover_card" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur_Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5cvy4")
+layout_mode = 0
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 1935.0
+offset_bottom = 1076.0
+
+[node name="Card" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -234.5
+offset_right = 155.5
+offset_bottom = 234.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i1i5x")
+expand_mode = 1

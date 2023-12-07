@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://cppr2wr5cwny1"]
+
+[ext_resource type="Script" path="res://Scene/Register/register.gd" id="1_cs7fk"]
+[ext_resource type="Shader" path="res://Scene/Setting/setting.gdshader" id="2_xb77o"]
+[ext_resource type="Texture2D" uid="uid://db46bu3itrm8c" path="res://Assets/Button/Register/preview.png" id="3_qmrtb"]
+[ext_resource type="Texture2D" uid="uid://bg3v21ln04pcr" path="res://Assets/login & register board/Register_board.png" id="3_tyv2g"]
+[ext_resource type="Texture2D" uid="uid://yllab5uay6wd" path="res://Assets/login & register board/exit base.png" id="4_1rw77"]
+[ext_resource type="Texture2D" uid="uid://jrxjpvv0qjaf" path="res://Assets/login & register board/icon.png" id="5_dvb8x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v87l2"]
+shader = ExtResource("2_xb77o")
+shader_parameter/amount = 1.0
+
+[node name="register_Input" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cs7fk")
+
+[node name="Blur_Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v87l2")
+layout_mode = 0
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 1935.0
+offset_bottom = 1076.0
+
+[node name="Register_Menu" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 68.0
+offset_right = 1378.0
+offset_bottom = 997.0
+
+[node name="Register_Background" type="TextureRect" parent="Register_Menu"]
+layout_mode = 2
+texture = ExtResource("3_tyv2g")
+expand_mode = 1
+
+[node name="Register" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 830.0
+offset_right = 1658.0
+offset_bottom = 1166.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("3_qmrtb")
+texture_pressed = ExtResource("3_qmrtb")
+texture_hover = ExtResource("3_qmrtb")
+stretch_mode = 0
+
+[node name="Password" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 529.0
+offset_right = 1286.0
+offset_bottom = 611.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Password"
+secret = true
+
+[node name="confirm" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 704.0
+offset_right = 1284.0
+offset_bottom = 786.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Confirmation Password"
+secret = true
+
+[node name="Username" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 341.0
+offset_right = 1287.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Email"
+
+[node name="MarginContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1317.0
+offset_top = 115.0
+offset_right = 1394.0
+offset_bottom = 177.0
+
+[node name="ExitBase" type="TextureButton" parent="MarginContainer"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -13.0
+offset_right = 197.0
+offset_bottom = 199.0
+scale = Vector2(0.38, 0.287736)
+texture_normal = ExtResource("4_1rw77")
+stretch_mode = 0
+
+[node name="Exit" type="TextureButton" parent="MarginContainer/ExitBase"]
+layout_mode = 0
+offset_left = 28.9475
+offset_top = 31.2787
+offset_right = 180.948
+offset_bottom = 180.279
+texture_normal = ExtResource("5_dvb8x")
+stretch_mode = 0
+
+[node name="Error" type="Label" parent="."]
+layout_mode = 0
+offset_left = 803.0
+offset_top = 213.0
+offset_right = 1115.0
+offset_bottom = 292.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="MarginContainer/ExitBase/Exit" to="." method="_on_exit_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
